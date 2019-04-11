@@ -15,6 +15,11 @@ var menus = [
         to: '/contact',
         label: 'Liên hệ',
         exact: false
+    },
+    {
+        to: '/products',
+        label: 'Danh sách sản phẩm',
+        exact: false
     }
 ];
 var MenuLink = ({ label, to, activeOnlyWhenExact }) => {
