@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
+import NotFound from './components/NotFound';
 var MenuLink = ({ label, to, activeOnlyWhenExact }) => {
     return (
         <Route path={to} exact={activeOnlyWhenExact} children={({match}) => {
             var active = match ? 'active' : '';
             return (
-                <li className={active}>
+                <li className={`my-li ${active}`}>
                     <NavLink to={to} className="my-link">{label}</NavLink>
                 </li>
             )
@@ -27,9 +28,12 @@ render() {
                         <MenuLink to="/contact" label="Liên hệ" activeOnlyWhenExact={false}></MenuLink>
                     </ul>
                 </nav>
-                <Route path="/" exact component={Home}></Route>
-                <Route path="/about" component={About}></Route>
-                <Route path="/contact" component={Contact}></Route>
+                <Switch>
+                    <Route path="/" exact component={Home}></Route>
+                    <Route path="/about" component={About}></Route>
+                    <Route path="/contact" component={Contact}></Route>
+                    <Route component={NotFound}></Route>
+                </Switch>
             </div>
         </Router>
     );
