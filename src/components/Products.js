@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Route, NavLink, Link } from 'react-router-dom';
 import Product from './../components/Product';
+import { log } from 'util';
 class Products extends Component {
     render() {
         var products = [
@@ -34,6 +35,8 @@ class Products extends Component {
                 </NavLink>
             )
         });
+        var {location} = this.props;
+        // {pathname: "/products", state: {from:{...}}, search: "", hash: "", key: "c9k25d"}
         return (
             <div className="container">
                 <div className="row">
