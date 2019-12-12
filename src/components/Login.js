@@ -4,8 +4,8 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: '',
-      passWord: ''
+      txtName: '',
+      txtPassword: ''
     }
   }
   onChange = (event) => {
@@ -21,8 +21,8 @@ class Login extends Component {
     var {txtName, txtPassword} = this.state;
     if(txtName === 'admin' && txtPassword === 'admin') {
       localStorage.setItem('user',JSON.stringify({
-        userName: txtName,
-        passWord: txtPassword    
+        txtName: txtName,
+        txtPassword: txtPassword    
       }))
     }
   }
@@ -30,15 +30,7 @@ class Login extends Component {
     var {txtName, txtPassword} = this.state;
     var loginuser = localStorage.getItem('user');
     if(loginuser) {
-      var {location} = this.props;
-      return <Redirect to={
-        {
-          pathname: '/products',
-          state: {
-            from: location
-          }
-        }
-      }></Redirect>
+      return <Redirect to={{pathname: '/products',search: "?utm=your+face"}}></Redirect>
     }
     return (
     <div className="Login">
